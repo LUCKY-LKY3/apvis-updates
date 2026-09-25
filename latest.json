@@ -1,5 +1,5 @@
 {
- "version": "2.0.0-dev.23.2",
- "bundle": "apvis-update-2.0.0-dev.23.2.tar.xz",
- "notes": "Settings: set up local AI and download models with one click. Atlas: flight data now from adsb.fi, falling back to ADSB.lol. Also includes 23.1 (fast model routes Ask, Ctrl+Alt+T terminal)."
+ "version": "2.0.0-dev.23.3",
+ "bundle": "apvis-update-2.0.0-dev.23.3.tar.xz",
+ "notes": "Big UI overhaul: glass HUD panels everywhere; Missions, Memory and Settings rebuilt (section rail, live overview, toggles); world Atlas glow-up (day/night with the sun, scan sweep, black-green markets, severity tags); Core glow-up (bloom, corona, rim light, orbiting lights, live CPU / memory / AI link gauges on the ring)."
 }
