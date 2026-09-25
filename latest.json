@@ -1,5 +1,5 @@
 {
- "version": "2.0.0-dev.23.3",
- "bundle": "apvis-update-2.0.0-dev.23.3.tar.xz",
- "notes": "Big UI overhaul: glass HUD panels everywhere; Missions, Memory and Settings rebuilt (section rail, live overview, toggles); world Atlas glow-up (day/night with the sun, scan sweep, black-green markets, severity tags); Core glow-up (bloom, corona, rim light, orbiting lights, live CPU / memory / AI link gauges on the ring)."
+ "version": "2.0.0-dev.23.4",
+ "bundle": "apvis-update-2.0.0-dev.23.4.tar.xz",
+ "notes": "The big one: Home rebuilt from your APVIS concept (menu bar, navigation, glass cards with live data, action tiles, terminal card) with a new core \u2014 a dark planet wrapped in green energy smoke. Awakening intro and shutdown screen. Atlas gets a holographic globe with real day and night plus a Global Overview. New System monitor and Devices pages, Appearance settings, APVIS terminal greeting, and a measured system check (Analyse)."
 }
