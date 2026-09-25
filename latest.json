@@ -1,5 +1,5 @@
 {
- "version": "2.0.0-dev.23.1",
- "bundle": "apvis-update-2.0.0-dev.23.1.tar.xz",
- "notes": "Ask: the fast model now decides which model answers (chat, code or deep) and says so. Ctrl+Alt+T or Ctrl+Alt+Del opens the terminal from Home. Installer keeps its progress bar in view."
+ "version": "2.0.0-dev.23.2",
+ "bundle": "apvis-update-2.0.0-dev.23.2.tar.xz",
+ "notes": "Settings: set up local AI and download models with one click. Atlas: flight data now from adsb.fi, falling back to ADSB.lol. Also includes 23.1 (fast model routes Ask, Ctrl+Alt+T terminal)."
 }
