@@ -1,5 +1,5 @@
 {
- "version": "2.0.0-dev.24.4",
- "bundle": "apvis-update-2.0.0-dev.24.4.tar.xz",
- "notes": "APVIS API and Apps Store. Hello, thanks, the time, the date and simple sums are answered instantly; repeated questions are remembered; the model warm-up now matches Ask so the first question no longer reloads the model (that was the 7 second hello). Your gaming PC can answer with bigger models when it is on (Settings, Local AI, Gaming PC boost). New Apps Store page: open your apps, APVIS apps and AI models; installing new apps comes with the dev.25 image."
+ "version": "2.0.0-dev.24.5",
+ "bundle": "apvis-update-2.0.0-dev.24.5.tar.xz",
+ "notes": "Ask remembers your chat: follow-up questions like \"and Spain?\" just work until you close the answer. Reminders and timers (\"remind me in 20 minutes to check the oven\", \"set a timer for 5 minutes\") with a countdown on Home. Say \"install VLC\" to open it in the Apps Store. Pin apps to Home and see your recently used apps. Answer length setting (Short, Normal, Detailed) and writing speed shown after each answer. Small talk uses a tiny fast model when installed (qwen2.5:0.5b). The APVIS API is now organised by area with more endpoints (GET http://127.0.0.1:8765/v1 lists them)."
 }
