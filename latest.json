@@ -1,5 +1,5 @@
 {
- "version": "2.0.0-dev.24.1",
- "bundle": "apvis-update-2.0.0-dev.24.1.tar.xz",
- "notes": "Smoother: the answer zoom is now centred, the core runs at your screen's full refresh rate instead of 30 fps, and extra glow layers switch off while it is grown."
+ "version": "2.0.0-dev.24.2",
+ "bundle": "apvis-update-2.0.0-dev.24.2.tar.xz",
+ "notes": "The terminal card and greeting now show your display name (e.g. lucky@apvis)."
 }
