@@ -1,5 +1,5 @@
 {
- "version": "2.0.0-dev.24",
- "bundle": "apvis-update-2.0.0-dev.24.tar.xz",
- "notes": "Your changes: no more slogans; answers now grow the flame ring and sit inside it (no box); the Home terminal card is a small APVIS terminal with a sharper logo; the Atlas globe looks like a real atlas (continents, borders, oceans, cities, day and night); new lock screen (Win+L, optional password at start); smoother animations."
+ "version": "2.0.0-dev.24.1",
+ "bundle": "apvis-update-2.0.0-dev.24.1.tar.xz",
+ "notes": "Smoother: the answer zoom is now centred, the core runs at your screen's full refresh rate instead of 30 fps, and extra glow layers switch off while it is grown."
 }
