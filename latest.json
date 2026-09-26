@@ -1,5 +1,5 @@
 {
- "version": "2.0.0-dev.25.1",
- "bundle": "apvis-update-2.0.0-dev.25.1.tar.xz",
- "notes": "Everything from 24.5 (chat follow-ups, reminders and timers, pinned apps, answer length, the organised APVIS API) now also reaches computers installed from the dev.25 image. New: a health guard that warns about a nearly full disk, low memory or overheating in Active Task, and answers \"what is using my disk space?\" from real measurements. Fixed: file search found nothing during the first minute after start-up."
+ "version": "2.0.0-dev.25.2",
+ "bundle": "apvis-update-2.0.0-dev.25.2.tar.xz",
+ "notes": "APVIS Browser: a private web browser in APVIS style with tracker blocking, third-party cookies refused, DuckDuckGo search and Ask APVIS about any page (Ctrl+Shift+A). Open it from Apps, the Apps Store, or say \"open bbc.co.uk\" / \"search the web for...\" in Ask. The browser itself needs the dev.26 image (Qt WebEngine); on older images Home tells you so."
 }
