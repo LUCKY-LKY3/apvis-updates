@@ -1,5 +1,5 @@
 {
- "version": "2.0.0-dev.23.4",
- "bundle": "apvis-update-2.0.0-dev.23.4.tar.xz",
- "notes": "The big one: Home rebuilt from your APVIS concept (menu bar, navigation, glass cards with live data, action tiles, terminal card) with a new core \u2014 a dark planet wrapped in green energy smoke. Awakening intro and shutdown screen. Atlas gets a holographic globe with real day and night plus a Global Overview. New System monitor and Devices pages, Appearance settings, APVIS terminal greeting, and a measured system check (Analyse)."
+ "version": "2.0.0-dev.24",
+ "bundle": "apvis-update-2.0.0-dev.24.tar.xz",
+ "notes": "Your changes: no more slogans; answers now grow the flame ring and sit inside it (no box); the Home terminal card is a small APVIS terminal with a sharper logo; the Atlas globe looks like a real atlas (continents, borders, oceans, cities, day and night); new lock screen (Win+L, optional password at start); smoother animations."
 }
