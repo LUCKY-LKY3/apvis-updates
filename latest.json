@@ -1,5 +1,5 @@
 {
- "version": "2.0.0-dev.25.2",
- "bundle": "apvis-update-2.0.0-dev.25.2.tar.xz",
- "notes": "APVIS Browser: a private web browser in APVIS style with tracker blocking, third-party cookies refused, DuckDuckGo search and Ask APVIS about any page (Ctrl+Shift+A). Open it from Apps, the Apps Store, or say \"open bbc.co.uk\" / \"search the web for...\" in Ask. The browser itself needs the dev.26 image (Qt WebEngine); on older images Home tells you so."
+ "version": "2.0.0-dev.27.1",
+ "bundle": "apvis-update-2.0.0-dev.27.1.tar.xz",
+ "notes": "New Atlas look: the globe fills the screen like an operations room, with a live status strip (UTC, feeds, layers, entities, solar), a layer rail with counts, a hideable intel panel and an events and markets ticker. The core has instrument rings and orbiting lights. Also: backup and restore to a USB drive (Settings, Backup), local weather once you set your town, ask about your files (\"summarise report.docx\"), screen questions (Win+Shift+S, dev.27 image) and media controls in the Control Centre."
 }
