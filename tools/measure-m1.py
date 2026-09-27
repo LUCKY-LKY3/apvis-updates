@@ -19,6 +19,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import statistics
 import platform
 import sys
 import tempfile
@@ -78,6 +79,16 @@ def ram_snapshot(client) -> dict:
             "ollama_rss_mb": mb(groups["ollama"]), "ollama_loaded": loaded}
 
 
+def wait_for_quiet(max_load: float, limit_s: float) -> float | None:
+    """Wait (up to limit_s) for the 1-minute load average to drop under max_load; returns the load then."""
+    if not hasattr(os, "getloadavg"):
+        return None
+    deadline = time.monotonic() + limit_s
+    while os.getloadavg()[0] >= max_load and time.monotonic() < deadline:
+        time.sleep(5)
+    return round(os.getloadavg()[0], 2)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--label", default="run", help="e.g. browser-open or browser-closed")
@@ -87,6 +98,10 @@ def main() -> int:
                         help="also time this question with meaning search off and on (repeatable: give one a note "
                              "answers and one no note matches)")
     parser.add_argument("--skip-build", action="store_true", help="skip the full index build timing")
+    parser.add_argument("--gap", type=float, default=4.0, help="seconds between timed runs (Ollama settles)")
+    parser.add_argument("--repeat", type=int, default=5, help="timed runs per question and setting (median reported)")
+    parser.add_argument("--max-load", type=float, default=1.5, help="wait until the 1-minute load is below this")
+    parser.add_argument("--quiet-wait", type=float, default=300, help="give up waiting for a quiet machine after this many s")
     args = parser.parse_args()
 
     layer = add_apvis_to_path()
@@ -159,21 +174,43 @@ def main() -> int:
             print("\nNote: Home hasn't built your meaning index yet (switch on Memory search and wait for "
                   "'notes read'), so the 'on' Ask below can only use keywords.")
         out["ask"] = []
+        out["load_before_ask"] = wait_for_quiet(args.max_load, args.quiet_wait)
+        print(f"\nLoad before timing: {out['load_before_ask']}")
+
+        def first_word(question: str, on: bool) -> tuple[float | None, float | None, list[str]]:
+            """Time to the first word only: the answer is stopped as soon as it starts (fair and fast)."""
+            cfg = AskConfig.load()
+            cfg.semantic_memory = on
+            started = []
+            result = AskService(cfg).ask(question, role="fast",           # fixed role: no cache, no router, same model
+                                         on_text=lambda text: started.append(True), cancelled=lambda: bool(started))
+            time.sleep(args.gap)          # let Ollama finish dropping the stopped answer before the next timing
+            return result.first_token_s, result.memory_s, result.notes_used
+
         for question in args.ask:
-            row: dict = {"question": question}
-            for label, on in (("off", False), ("on", True)):
-                cfg = AskConfig.load()
-                cfg.semantic_memory = on
-                service = AskService(cfg)
-                result = service.ask(question, role="fast")          # fixed role: no cache, no router, same model
-                row[label] = {"first_word_s": result.first_token_s, "memory_s": result.memory_s,
-                              "total_s": result.total_s, "model": result.model,
-                              "notes_used": result.notes_used, "status": result.status}
-                print(f"\nAsk {question!r} with meaning search {label}: first word {result.first_token_s}s "
-                      f"(of which finding notes {result.memory_s}s), total {result.total_s}s, notes used {result.notes_used}")
-            row["delta_s"] = round((row["on"]["first_word_s"] or 0) - (row["off"]["first_word_s"] or 0), 3)
-            print(f"  difference: {row['delta_s']}s (target: within ~0.3 s with no note used, first word under ~1.5 s with one)")
+            first_word(question, False)                                  # untimed warm-up of both paths
+            first_word(question, True)
+            runs: dict[str, list] = {"off": [], "on": []}
+            notes_seen: list[str] = []
+            for _ in range(args.repeat):
+                for label, on in (("off", False), ("on", True)):         # alternate, so load drifts hit both
+                    fw, mem, used = first_word(question, on)
+                    runs[label].append({"first_word_s": fw, "memory_s": mem, "notes_used": used})
+                    if on:
+                        notes_seen = used
+            row: dict = {"question": question, "repeat": args.repeat, "runs": runs}
+            for label in ("off", "on"):
+                times = sorted(r["first_word_s"] for r in runs[label] if r["first_word_s"] is not None)
+                row[label] = {"median_s": round(statistics.median(times), 3) if times else None,
+                              "min_s": times[0] if times else None, "max_s": times[-1] if times else None}
+            row["notes_used"] = notes_seen
+            row["delta_s"] = round((row["on"]["median_s"] or 0) - (row["off"]["median_s"] or 0), 3)
+            print(f"\nAsk {question!r} ({args.repeat} runs each, median):\n"
+                  f"  off: {row['off']['median_s']}s (range {row['off']['min_s']}-{row['off']['max_s']})\n"
+                  f"  on:  {row['on']['median_s']}s (range {row['on']['min_s']}-{row['on']['max_s']}), notes used {notes_seen}\n"
+                  f"  difference: {row['delta_s']}s (target: within ~0.3 s with no note used, first word under ~1.5 s with one)")
             out["ask"].append(row)
+        out["load_after_ask"] = os.getloadavg()[0] if hasattr(os, "getloadavg") else None
     out["ram_end"] = ram_snapshot(client)
     for key in ("ram_before", "ram_after_embed", "ram_end"):
         r = out[key]

@@ -1,5 +1,5 @@
 {
- "version": "3.0.0-dev.3",
- "bundle": "apvis-update-3.0.0-dev.3.tar.xz",
- "notes": "Memory search is faster still: one matching note by default, shorter snippets, and one less check per question."
+ "version": "3.0.0-dev.5",
+ "bundle": "apvis-update-3.0.0-dev.5.tar.xz",
+ "notes": "Memory search tuned for this computer: one matching note per answer, so answers that use your notes start quickly."
 }
