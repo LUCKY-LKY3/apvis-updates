@@ -1,5 +1,5 @@
 {
- "version": "3.0.0-dev.2",
- "bundle": "apvis-update-3.0.0-dev.2.tar.xz",
- "notes": "Memory search no longer slows answers down: only notes that really match your question are used (at most two short ones), and questions with no matching note start as fast as before."
+ "version": "3.0.0-dev.3",
+ "bundle": "apvis-update-3.0.0-dev.3.tar.xz",
+ "notes": "Memory search is faster still: one matching note by default, shorter snippets, and one less check per question."
 }
