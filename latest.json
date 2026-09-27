@@ -1,5 +1,5 @@
 {
- "version": "3.0.0-dev.1",
- "bundle": "apvis-update-3.0.0-dev.1.tar.xz",
- "notes": "APVIS 3 begins. Memory search by meaning: turn it on in Settings, Local AI, Memory search, and Ask finds your notes even when you use different words (it downloads a small model, nomic-embed-text, once). Also fixes version order so final releases sort above test builds."
+ "version": "3.0.0-dev.2",
+ "bundle": "apvis-update-3.0.0-dev.2.tar.xz",
+ "notes": "Memory search no longer slows answers down: only notes that really match your question are used (at most two short ones), and questions with no matching note start as fast as before."
 }

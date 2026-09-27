@@ -83,7 +83,9 @@ def main() -> int:
     parser.add_argument("--label", default="run", help="e.g. browser-open or browser-closed")
     parser.add_argument("--model", default="", help="embedding model (default: nomic-embed-text, else all-minilm)")
     parser.add_argument("--query", action="append", default=[], help="a search question (repeatable)")
-    parser.add_argument("--ask", default="", help="also time an Ask answer with meaning search off and on")
+    parser.add_argument("--ask", action="append", default=[],
+                        help="also time this question with meaning search off and on (repeatable: give one a note "
+                             "answers and one no note matches)")
     parser.add_argument("--skip-build", action="store_true", help="skip the full index build timing")
     args = parser.parse_args()
 
@@ -156,16 +158,22 @@ def main() -> int:
         if not out["real_index"].get("ready"):
             print("\nNote: Home hasn't built your meaning index yet (switch on Memory search and wait for "
                   "'notes read'), so the 'on' Ask below can only use keywords.")
-        out["ask"] = {}
-        for label, on in (("off", False), ("on", True)):
-            cfg = AskConfig.load()
-            cfg.semantic_memory = on
-            service = AskService(cfg)
-            result = service.ask(args.ask, role="fast")          # fixed role: no cache, no router, same model
-            out["ask"][label] = {"first_word_s": result.first_token_s, "total_s": result.total_s, "model": result.model,
-                                 "notes_used": result.notes_used, "status": result.status}
-            print(f"\nAsk with meaning search {label}: first word {result.first_token_s}s, total {result.total_s}s, "
-                  f"notes used {result.notes_used}")
+        out["ask"] = []
+        for question in args.ask:
+            row: dict = {"question": question}
+            for label, on in (("off", False), ("on", True)):
+                cfg = AskConfig.load()
+                cfg.semantic_memory = on
+                service = AskService(cfg)
+                result = service.ask(question, role="fast")          # fixed role: no cache, no router, same model
+                row[label] = {"first_word_s": result.first_token_s, "memory_s": result.memory_s,
+                              "total_s": result.total_s, "model": result.model,
+                              "notes_used": result.notes_used, "status": result.status}
+                print(f"\nAsk {question!r} with meaning search {label}: first word {result.first_token_s}s "
+                      f"(of which finding notes {result.memory_s}s), total {result.total_s}s, notes used {result.notes_used}")
+            row["delta_s"] = round((row["on"]["first_word_s"] or 0) - (row["off"]["first_word_s"] or 0), 3)
+            print(f"  difference: {row['delta_s']}s (target: within ~0.3 s with no note used, first word under ~1.5 s with one)")
+            out["ask"].append(row)
     out["ram_end"] = ram_snapshot(client)
     for key in ("ram_before", "ram_after_embed", "ram_end"):
         r = out[key]
