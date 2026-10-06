@@ -1,5 +1,5 @@
 {
- "version": "3.0.1",
- "bundle": "apvis-update-3.0.1.tar.xz",
- "notes": "Fixes: Shut down, Restart and Sleep work even when an app or another session is holding things up (and say why if the system refuses); no green smoke behind the goodbye and lock screens; smoother core."
+ "version": "3.0.2",
+ "bundle": "apvis-update-3.0.2.tar.xz",
+ "notes": "The start-up screen now shows just the APVIS mark. Includes the 3.0.1 fixes."
 }
