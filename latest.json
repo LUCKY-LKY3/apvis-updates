@@ -1,5 +1,5 @@
 {
- "version": "3.0.0-dev.5",
- "bundle": "apvis-update-3.0.0-dev.5.tar.xz",
- "notes": "Memory search tuned for this computer: one matching note per answer, so answers that use your notes start quickly."
+ "version": "3.0.0-dev.9",
+ "bundle": "apvis-update-3.0.0-dev.9.tar.xz",
+ "notes": "APVIS V3: the lacquer-and-brass look with a new brass instrument core, multi-step plans you approve once, session memory (off until switched on), and an AI queue that always answers you first."
 }
