@@ -1,5 +1,5 @@
 {
- "version": "3.0.0-dev.9",
- "bundle": "apvis-update-3.0.0-dev.9.tar.xz",
- "notes": "APVIS V3: the lacquer-and-brass look with a new brass instrument core, multi-step plans you approve once, session memory (off until switched on), and an AI queue that always answers you first."
+ "version": "3.0.0-dev.10",
+ "bundle": "apvis-update-3.0.0-dev.10.tar.xz",
+ "notes": "APVIS V3 final look: a JARVIS-style core of gold light on lacquer, and the whole interface to match. Includes everything from 3.0.0-dev.9."
 }
