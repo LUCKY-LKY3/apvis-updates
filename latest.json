@@ -1,5 +1,5 @@
 {
- "version": "3.0.0-dev.10",
- "bundle": "apvis-update-3.0.0-dev.10.tar.xz",
- "notes": "APVIS V3 final look: a JARVIS-style core of gold light on lacquer, and the whole interface to match. Includes everything from 3.0.0-dev.9."
+ "version": "3.0.1",
+ "bundle": "apvis-update-3.0.1.tar.xz",
+ "notes": "Fixes: Shut down, Restart and Sleep work even when an app or another session is holding things up (and say why if the system refuses); no green smoke behind the goodbye and lock screens; smoother core."
 }
