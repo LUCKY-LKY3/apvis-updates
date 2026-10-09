@@ -1,5 +1,5 @@
 {
- "version": "3.0.2",
- "bundle": "apvis-update-3.0.2.tar.xz",
- "notes": "The start-up screen now shows just the APVIS mark. Includes the 3.0.1 fixes."
+ "version": "3.0.3",
+ "bundle": "apvis-update-3.0.3.tar.xz",
+ "notes": "New look for the APVIS name: the logo is now the word APVIS (the old A looked too much like another logo). Cleaner core."
 }
