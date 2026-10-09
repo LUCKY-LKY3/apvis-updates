@@ -1,5 +1,5 @@
 {
- "version": "3.0.3",
- "bundle": "apvis-update-3.0.3.tar.xz",
- "notes": "New look for the APVIS name: the logo is now the word APVIS (the old A looked too much like another logo). Cleaner core."
+ "version": "3.0.4",
+ "bundle": "apvis-update-3.0.4.tar.xz",
+ "notes": "The ring logo in the top-left corner takes you back to Home. New APVIS wordmark and a cleaner core."
 }
