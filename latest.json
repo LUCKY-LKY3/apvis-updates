@@ -1,5 +1,5 @@
 {
- "version": "3.0.6",
- "bundle": "apvis-update-3.0.6.tar.xz",
- "notes": "Small fix: the installer now says to press Restart first and take the USB out once the screen goes dark."
+ "version": "3.0.7",
+ "bundle": "apvis-update-3.0.7.tar.xz",
+ "notes": "Faster pages: panels and buttons only repaint when they show, the System page no longer rebuilds hidden buttons every second, and the APVIS logo is sharp at small sizes."
 }

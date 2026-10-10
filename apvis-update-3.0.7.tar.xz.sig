@@ -1,0 +1,2 @@
+untrusted comment: verify with apvis-update.pub
+RWTjduAJPlqkTMDegRii7ViTOmxZTi8EQigZpSIOdu0E9JkGpBx/bp7+jg3Cs0KAEmnqVhPr4Bk6/aO0aFx8Rw7WKOhDVkP94gE=
