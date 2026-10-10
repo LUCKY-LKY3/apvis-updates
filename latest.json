@@ -1,5 +1,5 @@
 {
- "version": "3.0.7",
- "bundle": "apvis-update-3.0.7.tar.xz",
- "notes": "Faster pages: panels and buttons only repaint when they show, the System page no longer rebuilds hidden buttons every second, and the APVIS logo is sharp at small sizes."
+ "version": "4.0.0-dev.1.1",
+ "bundle": "apvis-update-4.0.0-dev.1.1.tar.xz",
+ "notes": "APVIS V4, first update: smoother pages and scrolling, Home keeps its full look on the OptiPlex, a sharp logo, Atlas planes move smoothly and Focus zooms in with a photo of the aircraft, and the new ring mark everywhere."
 }
