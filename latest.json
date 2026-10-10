@@ -1,5 +1,5 @@
 {
- "version": "3.0.5",
- "bundle": "apvis-update-3.0.5.tar.xz",
- "notes": "x"
+ "version": "3.0.6",
+ "bundle": "apvis-update-3.0.6.tar.xz",
+ "notes": "Small fix: the installer now says to press Restart first and take the USB out once the screen goes dark."
 }
